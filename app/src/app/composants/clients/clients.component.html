@@ -1,0 +1,66 @@
+<div class="container-table">
+<div class="title">Liste des clients</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef> nom </th>
+      <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+    </ng-container>
+  
+    <!-- nom Column -->
+    <ng-container matColumnDef="prenom">
+      <th mat-header-cell *matHeaderCellDef> prenom </th>
+      <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+    </ng-container>
+  
+    <!-- montant Column -->
+    <ng-container matColumnDef="montant">
+      <th mat-header-cell *matHeaderCellDef> montant </th>
+      <td mat-cell *matCellDef="let element"> {{element.montant}} </td>
+    </ng-container>
+
+
+    <!-- delai_paiement Column -->
+    <ng-container matColumnDef="delai_paiement">
+      <th mat-header-cell *matHeaderCellDef> delai de paiment </th>
+      <td mat-cell *matCellDef="let element"> {{element.delai_paiement}} </td>
+    </ng-container>
+
+    <!-- date_echeance Column -->
+    <ng-container matColumnDef="date_echeance">
+        <th mat-header-cell *matHeaderCellDef> date_echeance </th>
+        <td mat-cell *matCellDef="let element"> {{element.date_echeance}} </td>
+    </ng-container>
+      
+
+    <!-- action Column -->
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> action </th>
+        <td mat-cell *matCellDef="let element"> {{element.action}} </td>
+      </ng-container>
+    
+    <!-- mode_reglement Column -->
+    <ng-container matColumnDef="mode_reglement">
+        <th mat-header-cell *matHeaderCellDef> mode de réglement </th>
+        <td mat-cell *matCellDef="let element"> {{element.mode_reglement}} </td>
+      </ng-container>
+    
+    <!-- Operation Column -->
+    <ng-container matColumnDef="operation">
+      <th mat-header-cell *matHeaderCellDef> Opération </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button mat-icon-button color="accent" aria-label="icon button with a visibility icon" routerLink="/client-profile/{{element.id}}" ><mat-icon>visibility</mat-icon></button>
+        <button mat-icon-button color="primary" aria-label="icon button with a edit icon" routerLink="/edit-client/{{element.id}}"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="warn" aria-label="icon button with a delete icon" (click)="deleteClient(element.id)" ><mat-icon>delete</mat-icon></button>
+      </td>
+    </ng-container>
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

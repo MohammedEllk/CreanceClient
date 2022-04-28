@@ -1,0 +1,29 @@
+.mat-table
+{
+  background-color:transparent!important;  
+}
+table {
+  margin: 15px 3px 1px 2px;
+  width: 100%;
+}
+table tr:last-child td /*To remove the last border*/
+{
+  border-bottom:0 solid
+}
+.container-table {
+    margin-top: 5px;
+    border-radius: 2em;
+    background-color: #f4f3f8;
+    opacity: 90%; 
+    min-height: 400px;
+}
+.title {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    font-size: xx-large;
+}
+th {
+    font-size: x-large;
+}

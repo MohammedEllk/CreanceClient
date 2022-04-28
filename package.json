@@ -1,0 +1,28 @@
+{
+  "name": "CreanceClient",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "npx knex migrate:latest --knexfile ./db/knexfile.js",
+    "start": "node index.js",
+    "dev": "nodemon ./server.js localhost 3080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "knex": "^1.0.7",
+    "objection": "^3.0.1",
+    "pg": "^8.7.3",
+    "socket.io": "^4.5.0",
+    "ws": "^8.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

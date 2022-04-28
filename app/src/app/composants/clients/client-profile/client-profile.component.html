@@ -1,0 +1,57 @@
+<div *ngIf="client != null" class="container-profile">
+  <div class="card text-center">
+    <div class="card-header">
+      infos
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">Details client : {{client?.nom}} {{client?.prenom}} </h2>
+      <div class="card-text">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="title-tb" scope="col">propriété</th>
+              <th class="title-tb"scope="col">infos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">montant </th>
+              <td>{{client.montant}}</td>
+            </tr>
+            <tr>
+              <th scope="row"> délai de paiement</th>
+              <td>{{client.delai_paiement}}</td>
+            </tr>
+            <tr>
+              <th scope="row">action </th>
+              <td>{{client.action}}</td>
+            </tr>
+            <tr>
+              <th scope="row">mode de réglement </th>
+              <td>{{client.mode_reglement}}</td>
+            </tr>
+            <tr>
+              <th scope="row">retard de paiement</th>
+              <td>{{client.retard_paiement}}</td>
+            </tr>
+            <tr>
+              <th scope="row">date deuxième relance </th>
+              <td>{{client.date_second_relance}}</td>
+            </tr>
+            <tr>
+              <th scope="row">pénalite </th>
+              <td>{{client.penalite}}</td>
+            </tr>
+            <tr>
+              <th scope="row">commentaire</th>
+              <td>{{client.commentaire}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button mat-icon-button color="primary" aria-label="icon button with a edit icon" ><mat-icon>edit</mat-icon></button>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+  </div>
+</div>
