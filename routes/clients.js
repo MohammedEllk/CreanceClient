@@ -1,7 +1,7 @@
 const express = require('express');
-const { Client } = require('pg/lib');
 const Clients = require('../models/clients');
 const router = express.Router();
+const {getNotifsById} = require('../utils/cron');
 
 
 //add clients
@@ -9,10 +9,16 @@ router.post('/api/clients',async function(req, res, next) {
     try {
         console.log(req.body);
         const date_echeance = new Date();
-        date_echeance.setDate(date_echeance.getDate() + req.body.delai_paiement);
+        date_echeance.setDate(date_echeance.getDate() + Number(req.body.delai_paiement));
         req.body.date_echeance = date_echeance;
+        req.body.montant_ht = Number(req.body.montant_ht);
+        req.body.versement_client = Number(req.body.versement_client);
+        req.body.tauxTva = Number(req.body.tauxTva);
+        req.body.delai_paiement = Number(req.body.delai_paiement);      
+        req.body.date_facture = new Date();
         console.log(req.body);
-        await Clients.query().insert(req.body);
+        const clientInserted = await Clients.query().insert(req.body);
+        getNotifsById(clientInserted.id);
         res.send("success");
     }
     catch(err){
@@ -27,6 +33,7 @@ router.put('/api/clients/:id',async function(req, res, next) {
         const date_echeance = new Date();
         date_echeance.setDate(date_echeance.getDate() + req.body.delai_paiement);
         req.body.date_echeance = date_echeance;
+        req.body.date_facture = new Date();
         console.log(req.body);
         await Clients.query().patch(req.body).where("id",id);
         res.send("success");

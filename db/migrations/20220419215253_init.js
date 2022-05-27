@@ -5,15 +5,21 @@
 exports.up = function(knex) {
   return knex.schema.createTable("clients", (table) => {
       table.increments();
-      table.string("prenom").notNullable();
       table.string("nom").notNullable();
-      table.integer("montant").notNullable();
+      table.string("addresse").notNullable();
+      table.integer("numero_telephon").notNullable();
+      table.string("email").notNullable();
+      table.string("numero_facture").notNullable();
+      table.integer("montant_ht").notNullable();
+      table.date('date_facture');
+      table.integer("versement_client");
+      table.integer("tauxTva")
       table.integer("delai_paiement");
+      table.boolean("status");
       table.date("date_echeance").notNullable();
       table.string("action");
       table.string("mode_reglement").notNullable();
       table.integer("retard_paiement");
-      table.date("date_second_relance");
       table.integer("penalite");
       table.text("commentaire");
       table.timestamps(true,true);

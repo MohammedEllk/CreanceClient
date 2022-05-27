@@ -18,14 +18,19 @@ export class EditClientsComponent implements OnInit {
     private fb : FormBuilder,
     private Router: Router,
     private activatedRoute : ActivatedRoute) { 
-    this.clientForm = this.fb.group({
-      nom: ['',Validators.required],
-      prenom: ['',Validators.required],   
-      montant: ['',Validators.required],   
-      delai_paiement: ['',Validators.required],     
-      mode_reglement: ['',Validators.required],   
-      commentaire : ['',Validators.required]      
-    });
+      this.clientForm = this.fb.group({
+        nom: ['',Validators.required],
+        numero_facture : ['',Validators.required],
+        addresse : ['',Validators.required],
+        numero_telephon : ['',Validators.required],
+        email : ['',Validators.required], 
+        montant_ht: ['',Validators.required],
+        versement_client: ['',Validators.required],
+        tauxTva : ['',Validators.required],   
+        delai_paiement: ['',Validators.required],     
+        mode_reglement: ['',Validators.required],   
+        commentaire : ['',Validators.required]      
+      });
     this.getId = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
@@ -35,8 +40,13 @@ export class EditClientsComponent implements OnInit {
       this.client = obj[0];
       const objValue  = {
         nom  : obj[0].nom,
-        prenom : obj[0].prenom,
-        montant : obj[0].montant,
+        addresse : obj[0].addresse,
+        numero_facture : obj[0].numero_facture,
+        numero_telephon : obj[0].numero_telephon,
+        email : obj[0].email,
+        montant_ht : obj[0].montant_ht,
+        versement_client : obj[0].versement_client,
+        tauxTva : obj[0].tauxTva,
         delai_paiement : obj[0].delai_paiement,
         mode_reglement : obj[0].mode_reglement,
         commentaire  : obj[0].commentaire

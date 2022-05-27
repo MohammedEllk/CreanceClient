@@ -12,9 +12,5 @@ export class AppComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    //lister to an event from the socket io server 
-    this.websocket.listen("test").subscribe(obj => {
-      console.log("obj i b",obj);
-    })
   }
 }

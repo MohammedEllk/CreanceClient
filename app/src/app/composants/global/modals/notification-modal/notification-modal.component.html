@@ -1,0 +1,12 @@
+<h1 class="title-notif" mat-dialog-title>notifications</h1>
+<div *ngIf="data" mat-dialog-content>
+  <div *ngFor="let item of data" class="notifications-item"> <mat-icon>turned_in</mat-icon>
+    <div class="text">      
+        <p>{{item.infos}}</p>
+    </div>
+</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="" class="buttonOk" >OK</button>
+</div>
+

@@ -1,51 +1,76 @@
 <div class="container-form">
-<div class="form col-sm-8 col-sm-offset-2">
-    <div class="title">Creation du suivi client</div>
-    <div class="form-total">
-    <div class="left-info">
-        <img class="img-left-form" src="assets/images/bill-invoice.png">
-        <h1>Ajouter la facture du client </h1>
-    </div>
-    <form method="POST" enctype="application/json" [formGroup]="clientForm" (ngSubmit)="onSubmitForm()">
-        <div class="form-group">
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" class="form-control" formControlName="nom"> 
+    <div class="form col-sm-8 col-sm-offset-2">
+        <div class="title">Creation du suivi client</div>
+        <div class="form-total">
+        <div class="left-info">
+            <img class="img-left-form" src="assets/images/bill-invoice.png">
+            <h1>Ajouter la facture du client </h1>
         </div>
-        <div class="form-group">
-            <label for="prenom">Prenom</label>
-            <input type="text" id="prenom" class="form-control" formControlName="prenom"> 
-        </div>
-        <div class="form-group">
-            <label for="montant">montant resté</label>
-            <input type="text" id="montant" class="form-control" formControlName="montant"> 
-        </div>
-        <div class="form-group">
-            <label for="delai_paiement">délai de paiement</label>
-            <select id="delai_paiement" class="form-control" formControlName="delai_paiement"> 
-                <option value="20">20 jours</option>
-                <option value="30">30 jours</option>
-                <option value="45">45 jours</option>
-                <option value="60">60 jours</option> 
-            </select>   
+        <form method="POST" enctype="application/json" [formGroup]="clientForm" (ngSubmit)="onSubmitForm()">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" class="form-control" formControlName="nom"> 
             </div>
-        <div class="form-group">
-            <label for="mode_reglement">mode de reglement</label>
-            <select  id="mode_reglement" class="form-control" formControlName="mode_reglement"> 
-            <option value="cheque">cheque</option>
-            <option value="versement">versement</option>
-            <option value="virement">virement</option>
-            <option value="espèce">espèce</option>
-            </select>
+            <div class="form-group">
+                <label for="numero_facture">N* Facture</label>
+                <input type="text" id="numero_facture" class="form-control" formControlName="numero_facture"> 
+            </div>
+            <div class="form-group">
+                <label for="addresse">Adresse Client</label>
+                <input type="text" id="addresse" class="form-control" formControlName="addresse"> 
+            </div>
+            <div class="form-group">
+                <label for="numero_telephon">numero téléphon</label>
+                <input type="tel" id="numero_telephon" class="form-control" formControlName="numero_telephon"> 
+            </div>
+            <div class="form-group">
+                <label for="email">email électronique</label>
+                <input type="text" id="email" class="form-control" formControlName="email"> 
+            </div>
+            <div class="form-group">
+                <label for="montant_ht">montant HT</label>
+                <input type="number" id="montant_ht" class="form-control" formControlName="montant_ht"> 
+            </div>
+            <div class="form-group">
+                <label for="tauxTva">Taux tva</label>
+                <select id="tauxTva" class="form-control" formControlName="tauxTva"> 
+                    <option value="20">20 %</option>
+                    <option value="14">14 %</option>
+                    <option value="10">10 %</option>
+                    <option value="7">7 %</option> 
+                </select>   
+            </div>
+            <div class="form-group">
+                <label for="versement_client">Versement Client </label>
+                <input type="integer" id="versement_client" class="form-control" formControlName="versement_client"> 
+            </div>
+            <div class="form-group">
+                <label for="delai_paiement">délai de paiement</label>
+                <select id="delai_paiement" class="form-control" formControlName="delai_paiement"> 
+                    <option value="20">20 jours</option>
+                    <option value="30">30 jours</option>
+                    <option value="45">45 jours</option>
+                    <option value="60">60 jours</option> 
+                </select>   
+            </div>
+            <div class="form-group">
+                <label for="mode_reglement">mode de reglement</label>
+                <select  id="mode_reglement" class="form-control" formControlName="mode_reglement"> 
+                <option value="cheque">cheque</option>
+                <option value="versement">versement</option>
+                <option value="virement">virement</option>
+                <option value="espèce">espèce</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="commentaire">commentaire</label>
+                <textarea id="commentaire" class="form-control" formControlName="commentaire"> 
+                </textarea>
+            </div>
+            <div class="form-group">           
+            <button type="submit" class="btn btn-primary">ajouter le client</button>
+            </div> 
+        </form>
         </div>
-        <div class="form-group">
-            <label for="commentaire">commentaire</label>
-            <textarea id="commentaire" class="form-control" formControlName="commentaire"> 
-            </textarea>
-        </div>
-        <div class="form-group">           
-        <button type="submit" class="btn btn-primary">ajouter le client</button>
-        </div> 
-    </form>
     </div>
-</div>
-</div>
+    </div>

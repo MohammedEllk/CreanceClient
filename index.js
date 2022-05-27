@@ -1,5 +1,7 @@
 const express = require('express');
 
+const  {getNotifs} =  require('./utils/cron');
+
 const app = express();
 
 const cors = require('cors');
@@ -24,12 +26,13 @@ app.use((req, res, next) => {
 */
 app.use('/api/clients', require('./routes/clients').router);
 app.get('/api/clients',require('./routes/clients').router);
+app.get('/api/notifications',require('./routes/notifications').router);
 app.get('/api/clients/:id', require('./routes/clients').router);
 app.use('/api/clients/:id', require('./routes/clients').router);
 app.post('/api/clients', require('./routes/clients').router);
 app.put('/api/clients/:id', require('./routes/clients').router);
 app.delete('/api/clients/:id', require('./routes/clients').router);
 
-
+getNotifs();
 
 module.exports = app;

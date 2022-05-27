@@ -6,7 +6,7 @@ import { ClientsService } from 'src/app/services/clients.service';
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsComponent implements OnInit {
-  displayedColumns = ['nom', 'prenom', 'montant','delai_paiement','date_echeance','action',"mode_reglement","operation"];
+  displayedColumns = ['nom', 'montant_ht','delai_paiement','date_echeance','action',"mode_reglement","operation"];
   dataSource = [];
   constructor(private clientService : ClientsService) { }
 

@@ -16,7 +16,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { EditClientsComponent } from './composants/clients/forms/edit-clients/edit-clients.component';
-
+import { NotificationModalComponent } from './composants/global/modals/notification-modal/notification-modal.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ChartsModule } from 'ng2-charts';
+import { DashboardComponent } from './composants/clients/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { EditClientsComponent } from './composants/clients/forms/edit-clients/ed
     FormClientsComponent,
     ClientProfileComponent,
     NavbarComponent,
-    EditClientsComponent
+    EditClientsComponent,
+    NotificationModalComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,9 @@ import { EditClientsComponent } from './composants/clients/forms/edit-clients/ed
     MatTableModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

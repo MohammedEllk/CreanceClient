@@ -2,6 +2,7 @@ const http = require('http');
 const app = require('./index');
 const socketIO=require('socket.io');
 
+
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -47,7 +48,21 @@ io.on('connection', (socket)=>{
   console.log('New user connected');
 
   socket.emit("test","data");
+  socket.on('message',(data) => {
+    console.log("eeeeee",data);
+  })
 });
+
+
+
+const sendNotifications = function(eventName,data)  {
+  // server-side
+  io.on("connection", (socket) => {
+  socket.emit(eventName,data);
+});
+}
+
+
 
 server.on('error', errorHandler);
 server.on('listening', () => {
@@ -57,3 +72,4 @@ server.on('listening', () => {
 });
 
 server.listen(port);
+

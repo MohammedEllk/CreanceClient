@@ -13,16 +13,20 @@
               <a routerLink="/" routerLinkActive="active" class="nav-link" href="#" class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a routerLink="/add-client" routerLinkActive="active" class="nav-link" href="#">Ajouter un clients</a>
+              <a routerLink="/add-client" routerLinkActive="active" class="nav-link" href="#">Ajouter un client</a>
             </li>
             <li class="nav-item">
               <a routerLink="/clients" routerLinkActive="active"  class="nav-link" href="#" >Clients</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Notification</a>
+              <a class="nav-link"><button mat-icon-button [disabled]="disabledButton" (click)="openModel()">
+                <mat-icon class="icon">notifications</mat-icon>
+                <span class="badge">6</span>
+                </button>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Dashboard</a>
+              <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link">Admin Panel</a>
