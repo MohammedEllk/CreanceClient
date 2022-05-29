@@ -4,11 +4,21 @@
     background-color: #f4f3f8;
     opacity: 90%; 
     min-height: 400px;
-    display: flex;
 }
 
 .chart-wrapper {
     max-width: 600px;
     max-height: 600px;
     margin:  auto;
+}
+
+.container-stats {
+    display:  flex;
+    margin : auto
+}
+.stats {
+    padding-top: 15px;
+    padding-left: 20px;
+    margin: auto;
+    font-size: 35px;
 }

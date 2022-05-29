@@ -28,8 +28,10 @@ app.use('/api/clients', require('./routes/clients').router);
 app.get('/api/clients',require('./routes/clients').router);
 app.get('/api/notifications',require('./routes/notifications').router);
 app.get('/api/clients/:id', require('./routes/clients').router);
-app.use('/api/clients/:id', require('./routes/clients').router);
+app.use('/api/clients/stats/getStatistique', require('./routes/clients').router);
+app.get('/api/clients/stats/getStatistique', require('./routes/clients').router);
 app.post('/api/clients', require('./routes/clients').router);
+app.post('/api/clients/validerClient', require('./routes/clients').router);
 app.put('/api/clients/:id', require('./routes/clients').router);
 app.delete('/api/clients/:id', require('./routes/clients').router);
 

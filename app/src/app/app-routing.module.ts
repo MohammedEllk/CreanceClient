@@ -5,8 +5,10 @@ import { ClientsComponent } from './composants/clients/clients.component';
 import { DashboardComponent } from './composants/clients/dashboard/dashboard.component';
 import { EditClientsComponent } from './composants/clients/forms/edit-clients/edit-clients.component';
 import { FormClientsComponent } from './composants/clients/forms/form-clients/form-clients.component';
+import { HomepageComponent } from './composants/global/homepage/homepage.component';
 
-const routes: Routes = [{ path: 'clients', component: ClientsComponent },
+const routes: Routes = [{ path: 'home', component: HomepageComponent },
+                        { path: 'clients', component: ClientsComponent },
                         { path: 'add-client', component: FormClientsComponent },
                         { path: 'dashboard', component: DashboardComponent },
                         {path: 'client-profile/:id', component: ClientProfileComponent},

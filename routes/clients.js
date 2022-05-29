@@ -16,6 +16,7 @@ router.post('/api/clients',async function(req, res, next) {
         req.body.tauxTva = Number(req.body.tauxTva);
         req.body.delai_paiement = Number(req.body.delai_paiement);      
         req.body.date_facture = new Date();
+        req.body.action = "en_cours";
         console.log(req.body);
         const clientInserted = await Clients.query().insert(req.body);
         getNotifsById(clientInserted.id);
@@ -65,6 +66,17 @@ router.get('/api/clients/:id', async function(req, res, next) {
     
 });
 
+//Valider Client 
+router.post("/api/clients/validerClient",async function(req , res , next) {
+    console.log("req id",req.body.id);
+    const id = req.body.id;
+    await Clients.query().patch({
+        status : true
+    }).where("id",id);
+
+})
+
+
 //delete client
 
 router.delete('/api/clients/:id',async function(req, res , next) {
@@ -73,6 +85,40 @@ router.delete('/api/clients/:id',async function(req, res , next) {
     await Clients.query().delete().where("id",id);
 
 })
+
+// get total client payé et no payé 
+// show client by id
+router.get('/api/clients/stats/getStatistique', async function(req, res, next) {
+    const totalClient = await Clients.query().count("id",{as: 'length'}).first();
+    const clientPaid = await Clients.query().where("status",true).count("id",{as: 'length'}).first();
+    const clientNotPaid = await Clients.query().where("status",false).count("id",{as: 'length'}).first();
+    const clientPaidEcheance = await Clients.query().where("status",true)
+                                            .where('action','en_cours')
+                                            .count("id",{as: 'length'}).first();
+    const clientPaidFirstRelance = await Clients.query().where("status",true)
+                                            .where('action','first_relance')
+                                            .count("id",{as: 'length'}).first();
+    const clientPaidSecondRelance = await Clients.query().where("status",true)
+                                            .where('action','second_relance')
+                                            .count("id",{as: 'length'}).first();
+    const clientMisEnDemeure = await Clients.query().where('action','en_demeure')
+    .count("id",{as: 'length'}).first();
+
+    const obj = {
+        totalClient,
+        clientPaid,
+        clientNotPaid,
+        clientPaidEcheance,
+        clientPaidFirstRelance,
+        clientPaidSecondRelance,
+        clientMisEnDemeure
+    }
+
+    console.log("obj obj",obj);
+    res.send(obj);
+
+    
+});
 
 module.exports = {
     router: router

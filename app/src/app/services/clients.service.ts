@@ -28,8 +28,18 @@ export class ClientsService {
   update(id : number, data : any): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
+
   delete(id : number): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
+  }
+
+  valider(id : number): Observable<any> {
+    const obj = {id : id};
+    return this.http.post(`${baseUrl}/validerClient`,obj);
+  }
+
+  getStatistique(): Observable<any> {
+    return this.http.get(baseUrl+"/stats/getStatistique");
   }
   /*
   deleteAll(): Observable<any> {

@@ -22,4 +22,14 @@ export class ClientsComponent implements OnInit {
       console.log(obj);
     })
   }
+
+  validerClient(element : any) {
+    if(element.status == false) {
+      this.clientService.valider(element.id).subscribe(obj => {
+        console.log("obj",obj);
+      })
+    }
+    
+
+  }
 }

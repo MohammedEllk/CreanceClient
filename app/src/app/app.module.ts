@@ -20,6 +20,7 @@ import { NotificationModalComponent } from './composants/global/modals/notificat
 import {MatDialogModule} from '@angular/material/dialog';
 import { ChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './composants/clients/dashboard/dashboard.component';
+import { HomepageComponent } from './composants/global/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DashboardComponent } from './composants/clients/dashboard/dashboard.com
     NavbarComponent,
     EditClientsComponent,
     NotificationModalComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

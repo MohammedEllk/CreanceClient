@@ -1,4 +1,9 @@
 <div class="container-table">
+<div class="container-stats">
+  <div class="stats">Nombre des client totale : {{totalClient}}</div>
+  <div class="stats">Nombre de client payé : {{clientPaid}}</div>
+  <div class="stats">Nombre de client non payé : {{clientNotPaid}}</div>
+</div>
 <div class="chart-wrapper">
     <canvas baseChart 
     [datasets]="barChartData"
