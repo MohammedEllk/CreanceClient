@@ -12,6 +12,9 @@ import { clients } from 'src/app/models/clients';
 export class ClientProfileComponent implements OnInit {
   getId : any;
   client? : clients;
+  montant_tva? : number;
+  montant_ttc? : number;
+  restedu? : number;
 
   constructor(private clientService : ClientsService,
     private activatedRoute:ActivatedRoute,
@@ -23,6 +26,9 @@ export class ClientProfileComponent implements OnInit {
     this.clientService.get(this.getId).subscribe(obj => {
       console.log("object",obj);
       this.client = obj[0];
+      this.montant_tva = Number(obj[0].montant_ht) * (Number(obj[0].tauxTva)/100)
+      this.montant_ttc = Number(this.montant_tva) + Number(obj[0].montant_ht);
+      this.restedu = Number(this.montant_ttc) - Number(obj[0].versement_client);
     });
   }
 

@@ -17,6 +17,7 @@ router.post('/api/clients',async function(req, res, next) {
         req.body.delai_paiement = Number(req.body.delai_paiement);      
         req.body.date_facture = new Date();
         req.body.action = "en_cours";
+        req.body.status = false;        
         console.log(req.body);
         const clientInserted = await Clients.query().insert(req.body);
         getNotifsById(clientInserted.id);

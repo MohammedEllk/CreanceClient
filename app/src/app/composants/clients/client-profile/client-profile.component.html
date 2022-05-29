@@ -15,8 +15,20 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row">montant </th>
-              <td>{{client.montant}}</td>
+              <th scope="row">montant ht</th>
+              <td>{{client.montant_ht}}</td>
+            </tr>
+            <tr>
+              <th scope="row">montant de la tva</th>
+              <td>{{montant_tva}}</td>
+            </tr>
+            <tr>
+              <th scope="row">montant de la ttc</th>
+              <td>{{montant_ttc}}</td>
+            </tr>
+            <tr>
+              <th scope="row">reste du</th>
+              <td>{{restedu}}</td>
             </tr>
             <tr>
               <th scope="row"> délai de paiement</th>
@@ -27,6 +39,10 @@
               <td>{{client.action}}</td>
             </tr>
             <tr>
+              <th scope="row">versement_client </th>
+              <td>{{client.versement_client}}</td>
+            </tr>
+            <tr>
               <th scope="row">mode de réglement </th>
               <td>{{client.mode_reglement}}</td>
             </tr>
@@ -35,8 +51,12 @@
               <td>{{client.retard_paiement}}</td>
             </tr>
             <tr>
+              <th scope="row">date premier relance </th>
+              <td></td>
+            </tr>
+            <tr>
               <th scope="row">date deuxième relance </th>
-              <td>{{client.date_second_relance}}</td>
+              <td></td>
             </tr>
             <tr>
               <th scope="row">pénalite </th>

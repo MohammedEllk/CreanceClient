@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClientsService } from 'src/app/services/clients.service';
 @Component({
   selector: 'app-clients',
@@ -8,7 +9,8 @@ import { ClientsService } from 'src/app/services/clients.service';
 export class ClientsComponent implements OnInit {
   displayedColumns = ['nom', 'montant_ht','delai_paiement','date_echeance','action',"mode_reglement","operation"];
   dataSource = [];
-  constructor(private clientService : ClientsService) { }
+  constructor(private clientService : ClientsService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.clientService.getAll().subscribe(value => {
@@ -29,7 +31,7 @@ export class ClientsComponent implements OnInit {
         console.log("obj",obj);
       })
     }
-    
+    this.dataSource = this.dataSource;
 
   }
 }
