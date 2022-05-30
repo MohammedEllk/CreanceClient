@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   barChartLegend = true;
   barChartPlugins = [];
   barChartData: ChartDataSets[] = [
-    { data: [0,0,0], label: 'Le payement' }
+    { data: [0,0,0], label: 'Le paiement' }
   ];
     // Pie
     public pieChartOptions: ChartOptions = {
@@ -40,24 +40,27 @@ export class DashboardComponent implements OnInit {
     monkeyPatchChartJsLegend();
    }
 
-  ngOnInit(): void {
-    this.clientService.getStatistique().subscribe(obj => {
-      console.log("obj",obj);
-      this.totalClient = obj.totalClient['length'];
-      this.clientPaid = obj.clientPaid['length'];
-      this.clientNotPaid = obj.clientNotPaid['length'];
-      this.clientPaidEcheance = obj.clientPaidEcheance['length'];
-      this.clientPaidFirstRelance = obj.clientPaidFirstRelance['length'];
-      this.clientPaidSecondRelance = obj.clientPaidSecondRelance['length'];
-      this.clientPaidMisenDemeure = obj.clientPaidMisenDemeure['length'];
-      if(this.clientNotPaid > 0 || this.clientPaid > 0) {
-        this.pieChartData = [this.clientPaid,this.clientNotPaid]
-      }
+  async ngOnInit(){
+    const clientData = await this.clientService.getStatistique().toPromise();
+    console.log("data",clientData);
+    
+
+      this.totalClient = clientData.totalClient['length'];
+      this.clientPaid = clientData.clientPaid['length'];
+      this.clientNotPaid = clientData.clientNotPaid['length'];
+      this.clientPaidEcheance = clientData.clientPaidEcheance['length'];
+      this.clientPaidFirstRelance = clientData.clientPaidFirstRelance['length'];
+      this.clientPaidSecondRelance = clientData.clientPaidSecondRelance['length'];
+      this.clientPaidMisenDemeure = clientData.clientMisEnDemeure['length'];
+      
+      this.pieChartData = [this.clientPaid,this.clientNotPaid]
+      console.log("pieChet",this.pieChartData);
+      console.log("barchartdata",this.barChartData);
       this.barChartData[0].data = [this.clientPaidEcheance,this.clientPaidFirstRelance,this.clientPaidSecondRelance,this.clientPaidMisenDemeure]
       
       
       console.log("this.clientPaid",this.totalClient,this.clientPaid);
-    })
+
   }
 
 }

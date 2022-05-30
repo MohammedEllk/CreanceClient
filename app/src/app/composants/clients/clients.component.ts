@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { clients } from 'src/app/models/clients';
 import { ClientsService } from 'src/app/services/clients.service';
 @Component({
   selector: 'app-clients',
@@ -8,9 +9,11 @@ import { ClientsService } from 'src/app/services/clients.service';
 })
 export class ClientsComponent implements OnInit {
   displayedColumns = ['nom', 'montant_ht','delai_paiement','date_echeance','action',"mode_reglement","operation"];
-  dataSource = [];
+  dataSource : clients [];
   constructor(private clientService : ClientsService,
-              private router: Router) { }
+              private router: Router) { 
+                this.dataSource = [];
+              }
 
   ngOnInit(): void {
     this.clientService.getAll().subscribe(value => {
@@ -25,13 +28,16 @@ export class ClientsComponent implements OnInit {
     })
   }
 
-  validerClient(element : any) {
-    if(element.status == false) {
+  validerClient(element : clients) {
+    if(element.status == false && element.action != "en_demeure") {
       this.clientService.valider(element.id).subscribe(obj => {
         console.log("obj",obj);
       })
     }
-    this.dataSource = this.dataSource;
-
+    console.log("this.dataSource",this.dataSource);
+    const objIndex = this.dataSource.findIndex((obj => obj == element));
+    if(objIndex >= 0) {
+      this.dataSource[objIndex].status = true;
+    }
   }
 }

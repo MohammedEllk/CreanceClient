@@ -7,6 +7,7 @@ export interface clients{
     delai_paiement : number,
     date_echeance : Date,
     action? : string,
+    status? : boolean;
     mode_reglement  :string,
     versement_client? : number,
     retard_paiement? : number,
