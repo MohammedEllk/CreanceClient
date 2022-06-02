@@ -33,7 +33,7 @@ const getNotifsById = async function (id) {
     schedule.scheduleJob(dateNotifecheance,async () => {
         const clientMomentNotif = await Clients.query().where("id",id).first();
         if(clientMomentNotif.status != true){
-            const txtNotif = 'le client ' + clientMomentNotif.nom + ' avec la facture ' + clientMomentNotif.numero_facture +' doit payer aujourd\'hui';
+            const txtNotif = 'le client ' + clientMomentNotif.nom + ' dont la facture ' + clientMomentNotif.numero_facture +' doit payer aujourd\'hui sa créance';
             const notif = await Notifications.query().insert({
                 infos : txtNotif,
                 client_id : client.id,
@@ -59,7 +59,7 @@ const getNotifsById = async function (id) {
     schedule.scheduleJob(dateNotifFirstRelance,async () => {
         const clientMomentNotif = await Clients.query().where("id",id).first();
         if(clientMomentNotif.status != true){
-            const txtNotif = 'le client ' + clientMomentNotif.nom + ' avec la facture ' + clientMomentNotif.numero_facture +' doit payer aujourd\'hui sa 1er relance';
+            const txtNotif = 'Aujourd\'hui, c\'est la date d\'envoi de la première relance au client ' + clientMomentNotif.nom + ' dont la facture ' + clientMomentNotif.numero_facture;
             const notif = await Notifications.query().insert({
                 infos : txtNotif,
                 client_id : client.id,
@@ -83,7 +83,7 @@ const getNotifsById = async function (id) {
     schedule.scheduleJob(dateNotifSecondeRelance,async () => {
         const clientMomentNotif = await Clients.query().where("id",id).first();
         if(clientMomentNotif.status != true){
-            const txtNotif = 'le client ' + clientMomentNotif.nom + ' avec la facture ' + clientMomentNotif.numero_facture +' doit payer aujourd\'hui sa 2 eme relance';
+            const txtNotif = 'Aujourd\'hui, c\'est la date d\'envoi de la deuxième relance au client ' + clientMomentNotif.nom + ' dont la facture ' + clientMomentNotif.numero_facture;
             const notif = await Notifications.query().insert({
                 infos : txtNotif,
                 client_id : client.id,
